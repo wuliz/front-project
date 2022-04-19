@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    function sendAjax(){
+       return new Promise(((resolve, reject) => {
+            let xhr = new XMLHttpRequest();
+            let url="http://api.k780.com/?app=weather.city&areaType=cn&appkey=10003&sign=b59bc3ef6191eb9f747dd4e83c99f2a4&format=json";
+            xhr.open("get",url);
+            xhr.send();
+            xhr.onreadystatechange = function(){
+                if ( xhr.readyState == 4 && xhr.status == 200 ) {
+                    //console.log(xhr.response);
+                    resolve(xhr.response)
+                } else {
+                   // alert( xhr.statusText );
+                }
+            };
+        }))
+    }
+   let p= sendAjax().then(value => {
+       console.log(1,value);//第二输出
+   },reason => {});
+    console.log(2,p); //第一输出
+    async function f() {
+        let b = await sendAjax();
+        console.log(3,b);//第三输出
+    }
+    f();
+
+</script>
+</body>
+</html>

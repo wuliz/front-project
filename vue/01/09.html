@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    let obj={name:"zs",age:14,pro:["狗","猪"]}
+    console.log(Object.keys(obj))//
+    console.log(Object.values(obj));
+    console.log(Object.entries(obj))
+    console.log(new Map(Object.entries(obj)))
+
+    class person{
+        name;
+        #age;//私有属性
+        constructor(name,age) {
+            this.name = name;
+            this.#age = age;
+        }
+    }
+    let person1 = new person("zs",18);
+
+    console.log(person1.name,person1.#age);
+</script>
+</body>
+</html>

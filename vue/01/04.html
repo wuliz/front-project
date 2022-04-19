@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+</head>
+<body>
+<!-- V 视图层 -->
+<div id="app">
+    {{ message | myfilter }}
+</div>
+<script>
+    Vue.filter('myfilter',function (data) {
+        var a="a";
+        var b="b";
+        return `${a}-${b}`; //a-b
+    })
+    // app -> VM 双向绑定层
+    var app = new Vue({
+        el: '#app',
+        // M 数据层
+        data: {
+            message: 'Hello Vue!'
+        }
+    })
+</script>
+</body>
+</html>

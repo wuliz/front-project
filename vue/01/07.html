@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    async function f() {
+       let result = await new Promise(((resolve, reject) => {
+            resolve("1");
+        }))
+        console.log(result) // 返回promise对象的值：1
+    }
+    console.log(f())
+</script>
+</body>
+</html>

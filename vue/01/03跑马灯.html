@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+        [v-cloak]{display: none}
+    </style>
+</head>
+<body>
+<!-- V 视图层 -->
+<div id="app">
+       <p>{{message}}</p>
+    <input v-model="message">
+        <button  v-on:click="fun3">butoon</button>
+</div>
+<script>
+
+    new Vue({
+        el:"#app",
+        methods: {
+            fun1:()=> {
+
+            }
+        },
+        data:{
+
+        }
+    })
+
+    // app -> VM 双向绑定层
+    var app = new Vue({
+        el: '#app',
+        // M 数据层
+        data: {
+            message: '你好吗!',
+        },
+        methods:{
+            fun(){
+                this.message = this.message.substring(1,this.message.length)+this.message.substring(0,1)
+            },
+            fun2(){
+                setInterval(this.fun,1000)
+            },
+            // this指向 vue对象
+            fun3(){
+                setInterval(function(){
+                    this.message = this.message.substring(1,this.message.length)+this.message.substring(0,1)
+                },1000)
+            }
+        }
+    })
+</script>
+</body>
+</html>

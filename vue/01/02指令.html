@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+        [v-cloak]{display: none}
+    </style>
+</head>
+<body>
+<!-- V 视图层 -->
+<div id="app">
+        <!--解决闪烁问题-->
+        <p v-cloak>message </p>
+        <!-- 默认没有闪烁问题-->
+        <p v-text="message1"></p>
+        <!--会识别html元素-->
+        <p v-html="message1"></p>
+        <button v-bind:title="msg" v-on:click="show">butoon</button>
+</div>
+<script>
+    // app -> VM 双向绑定层
+    var app = new Vue({
+        el: '#app',
+        // M 数据层
+        data: {
+            message: 'Hello Vue!',
+            message1:'<p>222</p>',
+            msg:"mytitle"
+        },
+        methods:{
+            show(){alert("123")},
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+</head>
+<body>
+<!-- V 视图层 -->
+<div id="app">
+    {{ message }}
+    <button @click="update()">click</button>
+</div>
+<script>
+    // app -> VM 双向绑定层
+    var app = new Vue({
+        el: '#app',
+        // M 数据层
+        data: {
+            message: 'Hello Vue!'
+        },
+        methods:{
+            update(){
+                this.message = "456";
+            }
+        },
+        beforeCreate() {
+            console.log(this.message)// undefined
+        },
+        created(){
+            console.log(this.message)//Hello Vue!
+        },
+        beforeMount(){
+            console.log(document.getElementById("app").innerText);//{{ message }}
+        },
+        beforeUpdate() {
+            console.log(document.getElementById("app").innerText);//Hello Vue!
+          console.log(this.message);//456
+        },
+        updated(){
+            console.log(document.getElementById("app").innerText);//456
+            console.log(this.message);//456
+        }
+    })
+</script>
+</body>
+</html>
